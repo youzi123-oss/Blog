@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商品一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+	<link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+	<header>
+		<!--スマートフォン-->
+		<nav class="menu">
+			<div class="menu-contents">
+				<div class="menu-inner">
+					<ul>
+						
+						<li class="menu__item"><a href="">Logout</a></li>
+					</ul>
+				</div>
+				<div class="menu-toggle_btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+		<!--pc-->
+		<nav class="pc">
+			<div class="pc-inner">
+				<div class="pc-logo">
+                    <h2 id="w-line-1">togyoho</h2>
+				</div>
+				<ul class="pc-list">
+					
+					<li class="pc-list__item"><a href="">Home</a></li>
+					<li class="pc-list__item"><a href="">Log out</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+    <main>
+        <div class="main-inner">
+            <section class="register-section">
+                
+                <form action="" method="post" enctype="multipart/form-data">
+                   
+                    <div class="register-section-details">
+                        <h2 id="w-line-2">Add new article</h2>
+                        <div class="register-section-details_flex">
+                            <h3>title</h3>
+                       <input type="text" name="userName" value="" id="userName">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <h3>category</h3>
+                            
+                            <select name="blogCategory" >
+                                <option value=""></option>
+                                <option value="家庭">家庭</option>
+                                <option value="勉強">勉強</option>
+                                <option value="仕事">仕事</option>
+                            </select>
+                        </div>
+                        <div class="register-section-details_flex">
+                            <h3>image</h3>
+                            <input type="file" id="fileselect" name="productImage">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <h3>introduce</h3>
+                           
+                            <textarea name="productDescription" ></textarea>
+                        </div>
+                        <div class="register-section-details_flex">
+                            <button id="register" >Register</button>
+                            <button id="back-btn" onclick="history.back();" type="button">Back</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </section>
+        </div>
+    </main>
+    
+</body>
+
+</html>
