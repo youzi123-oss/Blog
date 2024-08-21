@@ -1,0 +1,299 @@
+
+/*========= 共通設定CSS ===============*/
+
+
+main {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+
+/*========= ヘッダーのCSS ===============*/
+header {
+    background-color: rgba(255, 255, 255, .7);
+    background-image: linear-gradient(120deg,#78daec 0%,#c5a8de 100%) ;
+    height: 4rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    border-bottom: 1px solid rgb(236, 229, 229);
+    
+}
+
+/*ヘッダーの幅を綺麗にそろえるために要素の大きさを均一にする*/
+ .menu-contents {
+    width: 4rem;
+}
+
+.pc {
+    display: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 0.5rem;
+}
+
+/*----------------------------
+* メニュー本体
+*----------------------------*/
+
+
+/*----------------------------------------------------------------
+商品一覧画面
+--------------------------------------------------------------------*/
+article {
+    width: 90%;
+    margin: 0 auto;
+}
+
+article h2 {
+    color: #594A4E;
+    font-family: Kiwi Maru;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+/*--------検索部分----------------*/
+
+
+/*----------商品登録ボタン--------------*/
+.register-item{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+/*----------------登録ボタン---------------------*/
+.btn--orange,
+a.btn--orange {
+	color: #fff;
+    background-image: linear-gradient(120deg,#78daec 0%,#c5a8de 100%) ;
+  
+    box-shadow: 0 5px 0 #aaaaaa;
+    transition: 0.3s;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+	width: 30%;
+	border: 0;
+	border-radius: 25px;
+    line-height: 1;
+	padding: 14px 40px;
+	line-height: 1;
+	/* display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    padding: 14px 40px;
+    border: 0;
+     background-image: linear-gradient(120deg,#78daec 0%,#c5a8de 100%) ;
+    border-radius: 25px;
+    line-height: 1;
+    cursor: pointer;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+   */
+   
+}
+
+.btn--orange:hover,
+a.btn--orange:hover {
+    background-color: #ffefcc;
+    color: black;
+    transform: translateY(3px);
+    text-decoration: none;
+    box-shadow: 0 2px 0 #aaaaaa;
+}
+
+a.btn--radius {
+    border-radius: 3rem;
+}
+/*----------商品一覧--------------*/
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.products li {
+    width: 33%;
+    margin: 0.5rem;
+    border: 1px solid #594A4E;
+}
+
+.products li a img {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.products li a p {
+    text-align: center;
+    color: #594A4E;
+    font-weight: bold;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+/*---------------------------------------------------------------------------
+商品詳細
+----------------------------------------------------------------------------*/
+
+
+/*----------------商品一覧---------------------*/
+
+/*-------------------------------------------------------
+                        登録画面
+---------------------------------------------------------*/
+
+/*-------------------------------*/
+
+
+/*--------------フッター------------*/
+footer {
+    background-image: linear-gradient(120deg,#78daec 0%,#c5a8de 100%) ;
+    padding: 1rem 0
+}
+
+footer div {
+    text-align: center;
+    color: #fff;
+
+}
+/*-------------------------------------------------------
+                        ジャンル一覧
+---------------------------------------------------------*/
+
+
+
+
+    /*-----------------ヘッダー-----------------*/
+    .pc {
+        display: block;
+        padding-top: 1.5rem;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .pc-inner {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+
+    }
+
+    .pc-list {
+        display: flex;
+        align-items: center;
+        gap: 0 1.5rem;
+    }
+
+    .pc-list a {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #594A4E;
+        font-family: "Permanent Marker", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+ 
+    .pc-list a:hover {
+        color: #EC6015;
+    }
+    /*----------------------------------------------------------------
+商品一覧画面
+--------------------------------------------------------------------*/
+    article {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    article h2 {
+        font-size: 2rem;
+        padding: 1.5rem 0;
+    }
+
+    /*--------検索部分----------------*/
+
+ 
+
+    /*----------商品一覧--------------*/
+    .products li {
+        width: 25%;
+    }
+
+    .products li a img {
+        padding: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    /*---------------------------------------------------------------------------
+商品詳細
+----------------------------------------------------------------------------*/
+
+
+/*----------------商品一覧---------------------*/
+.products-list {
+    width: 800px;
+    margin: 1rem auto;
+}
+
+    /*--------------フッター------------*/
+    footer {
+        padding: 1.5rem 0
+    }
+
+
+#w-line-1{
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #594A4E;
+        font-family: "Permanent Marker", cursive;
+        font-weight: 400;
+        font-style: normal;
+  
+}
+/* 字体大小和类型 */
+#w-line-2{
+   
+    font-weight: 400;
+    color:#70b4e3;
+    padding: 7px 4;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    display: flex;
+    height: 200px;
+    width: 1000px;
+    border: 1px solid #000;
+    justify-content: space-between;
+    background-size: cover; }
+#box div{
+    width: 100px;
+
+}
+img{
+    width: 100%;
+    vertical-align: top;
+}
+main {
+    margin-top: 3.9rem;
+    margin-bottom:3rem;
+}
+ 

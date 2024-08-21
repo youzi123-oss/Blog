@@ -5,36 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
 
-<body>
+<body th:background="@{/img/6.jpg}" alt="">
+	
     <main>
+		<div>
+		
+		</div>
         <section class="register">
 
-            <form class="box" action="#" method="post">
+            <form class="box" th:action="@{/register/process}" method="post">
                 <h1 class="table">Register</h1>
 
-                <input type="text" class="login-field" value="" placeholder="UserName" name="name" required>
+                <input type="text" class="login-field" value="" placeholder="UserName" name="accountName" required>
 
 
-                <input type="text" class="login-field" value="" placeholder="Email" name="email" required>
+                <input type="text" class="login-field" value="" placeholder="Email" name="accountEmail" required>
 
 
                 <input type="password" class="login-field" value="" placeholder="Password" name="password" required>
 
-                <!-- <div>
-                    <a href="#" class="go">Register</a>
-                </div> -->
-
-                <div >
-                    <button id="register">Register</button>
-                </div>
-                
+				<div >
+				     <button id="register">Register</button>
+			    </div>
                 <div class="content">
                     ログインは<a href="login.html">こちら</a>
                 </div>
-                
             </form>
         </section>
     </main>

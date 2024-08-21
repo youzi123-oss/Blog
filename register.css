@@ -48,7 +48,7 @@ body{
             font: 900 16px '';
             
             }
- .go{
+ /* .go{
         text-align: center;
         display: block;
          height: 24px;
@@ -61,7 +61,7 @@ body{
          background-image: linear-gradient(to left,
          #fd79a8,#a29bf6);
          
-     }
+     } */
 
 .content{
          text-align: center;
@@ -74,5 +74,24 @@ body{
         color:#ff0;
         }
         
-
+#register{
+            display: block;
+            width: 100%;
+            color: #fff;
+            font-size: 14px;
+            margin: 0;
+            padding: 14px 40px;
+            border: 0;
+            background-image: linear-gradient(to left,
+         #fd79a8,#a29bf6);
+            font: 900 20px;
+            border-radius: 25px;
+            line-height: 1;
+            cursor: pointer;
+            font-family: "Permanent Marker", cursive;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 3px;
+            font-size: larger;
+           }
        

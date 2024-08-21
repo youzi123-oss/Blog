@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(img/6.jpg);
+   
     background-size: cover;
 }
 
@@ -42,50 +42,34 @@ border-bottom: 3px solid rgb(150,150,240);
 font: 900 16px '';
 
 }
-.go{
-text-align: center;
-display: block;
-height: 24px;
-padding: 12px;
-font: 900 20px;
-border-radius: 10px;
-margin-top: 20px;
-color: #fff;
-letter-spacing: 3px;
-background-image: linear-gradient(to left,
-#fd79a8,#a29bf6);
-
-
-}
 
 .content{
     text-align: center;
     margin: 14px;
      color:#fd79a8;
 text-decoration:underline;
-
 }
 
 a{
     color:#ff0;
 }
-#login{
-    display: block;
-    width: 100%;
-    color: #fff;
-    font-size: 14px;
-    margin: 0;
-    padding: 14px 40px;
-    border: 0;
-    background-image: linear-gradient(to left,
- #fd79a8,#a29bf6);
-    font: 900 20px;
-    border-radius: 25px;
-    line-height: 1;
-    cursor: pointer;
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 3px;
-    font-size: larger;
-   }
+#login {
+	display: block;
+	width: 100%;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+	padding: 14px 40px;
+	border: 0;
+	background-image: linear-gradient(to left,
+			#fd79a8, #a29bf6);
+	font: 900 20px;
+	border-radius: 25px;
+	line-height: 1;
+	cursor: pointer;
+	font-family: "Permanent Marker", cursive;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: 3px;
+	font-size: larger;
+}
