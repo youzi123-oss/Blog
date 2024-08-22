@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"th:href="@{/css/login.css}">
+    <title>Login</title>
+
+</head>
+
+<body th:background="@{/img/6.jpg}" alt="">
+    <main>
+        <section class="login">
+            <form class="box" th:action="@{/login/process}" method="post">
+                <h1 class="table">Welcome</h1>
+                <br>
+                <input type="text" placeholder="Email" id="login-email" name="accountEmail" required>
+
+                <input type="password" placeholder="Password" id="login-pass" name="password" required>
+                <br>
+				<div >
+				        <button id="login">Login</button>
+				</div>
+                <div class="content">
+                    登録は<a href="register.html">こちら</a>
+                </div>
+            </form>
+
+
+        </section>
+    </main>
+</body>
+
+</html>
