@@ -18,7 +18,7 @@ public interface BlogDao extends JpaRepository<Blog, Long> {
 	//SELECT * FROM products
 	//用途：商品の一覧を表示させるときに使用
 	//import选择java.uti
-	List<Blog>findAll();
+	List<Blog>findByAccountId(Long accountId);
 	
 	//SELECT * FROM blog WHERE blogTitle=?
 	//同じ商品の登録チェックに使用（同じ商品名が登録されないようになうにするチェックに使用

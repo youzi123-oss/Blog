@@ -12,10 +12,10 @@
 <body th:background="@{/img/6.jpg}" alt="">
     <main>
         <section class="login">
-            <form class="box" action="#" method="post">
+            <form class="box" th:action="@{/login/process}" method="post">
                 <h1 class="table">Welcome</h1>
                 <br>
-                <input type="text" placeholder="Email" id="login-email" name="email" required>
+                <input type="text" placeholder="Email" id="login-email" name="accountEmail" required>
 
                 <input type="password" placeholder="Password" id="login-pass" name="password" required>
                 <br>
@@ -23,7 +23,7 @@
 				        <button id="login">Login</button>
 				</div>
                 <div class="content">
-                    登録は<a href="register.html">こちら</a>
+                    登録は<a th:href="@{/register}">こちら</a>
                 </div>
             </form>
 

@@ -5,13 +5,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>商品一覧</title>
+	<title>Blog List</title>
 	<!-- <link rel="stylesheet" href="blog.css"> -->
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="blog_list.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog_list.css}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link th:href="@{https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap}" rel="stylesheet">
 		
 </head>
 
@@ -36,42 +36,51 @@
 		</nav>
 		<!--pc-->
 		<nav class="pc">
-			<div class="pc-inner">
-				<div class="pc-logo">
-                    <h2 id="w-line-1">togyoho</h2>
-				</div>
-				<ul class="pc-list">
-					<li class="pc-list__item"></li>
-					<li class="pc-list__item"><a href="">Home</a></li>
-                    <li class="pc-list__item"><a href="">Register</a></li>
-					<li class="pc-list__item"><a href="">Log out</a></li>
-				</ul>
-			</div>
-		</nav>
+		           <div class="pc-inner">
+					<ul class="pc-list">
+						<h2 class="pc-list__item">Welcome!</h2>
+						<h2 class="pc-list__item" th:text="${accountName}"></h2>
+					</ul>
+					
+		               <ul class="pc-list">
+
+		                   <li class="pc-list__item"><a th:href="@{/blog/register}">Blog Register</a></li>
+		                   <li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
+		               </ul>
+		           </div>
+		       </nav>
 	</header>
 	<main>
 		<div >
 			<div class="box">
-			   <img src="/Blog/img/11.jpg" alt="">
-				<img src="/Blog/img/10.png" alt="">
 				
-				<img src="/Blog/img/11.jpg" alt="">
-				<img src="/Blog/img/10.png" alt="">
+			   <img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
 				
-				<img src="/Blog/img/11.jpg" alt="">
-				<img src="/Blog/img/10.png" alt="">
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
+				
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
 			</div>
 		</div>
 		<article>
 			<h2 id="w-line-2">Blog List</h2>
 			<section class="register-item">
 				<div class="all-view-register__button">
-					<a href="" class="btn btn--orange btn--radius">ブログ登録</a>
+					<a th:href="@{/blog/register}" class="btn btn--orange btn--radius">Blog Register</a>
 				</div>
 			</section>
 			<ul class="products">
-				<li >
-					<a href="">
+				<li th:each="blog:${blogList}">
+					<!--edit中没有数据，是无法显示的。edit后面接着是数据设定-->
+					<!--<a th:href="@{(blogId=${blog.blogId})}">-->
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+					<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="">
+					<p th:text="${blog.blogTitle}"></p><br>
+					<p th:text="${blog.categoryName}"></p><br>
+					</a>	
+					
 						<img src="" alt="">
 						<p></p><br>
 						<p></p>

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品一覧</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap"
+    <link rel="preconnect"th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap}"
         rel="stylesheet">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/blog.css}">
 </head>
 
 <body>
@@ -33,15 +33,17 @@
             </div>
         </nav>
         <!--pc-->
-        <nav class="pc">
-            <div class="pc-inner">
-                <div class="pc-logo">
-                    <h2 id="w-line-1">togyoho</h2>
-                </div>
-                <ul class="pc-list">
-
-                    <li class="pc-list__item"><a href="">Home</a></li>
-                    <li class="pc-list__item"><a href="">Log out</a></li>
+		<nav class="pc">
+		  <div class="pc-inner">
+			<ul class="pc-list">
+				<h2 class="pc-list__item">Welcome!</h2>
+			    <h2 class="pc-list__item" th:text="${accountName}"></h2>
+			</ul>
+							
+            <ul class="pc-list">
+					<!--<li class="pc-list__item" th:text="${accountName}"></li>-->
+                    <li class="pc-list__item"><a th:href="@{/blog/list}">Blog List</a></li>
+                    <li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
                 </ul>
             </div>
         </nav>
@@ -50,33 +52,37 @@
         <div class="main-inner">
             <section class="register-section">
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <form class="form-contents" th:action="@{/blog/register/process}" method="post" enctype="multipart/form-data">
 
                     <div class="register-section-details">
-                        <h2 id="w-line-2">Add new article</h2>
+                        <h2 id="title">Add new article</h2>
+						
+						
                         <div class="register-section-details_flex">
-                            <h3 class="contents-width">title</h3>
-                            <input class="input-width" type="text" name="userName" value="" id="userName">
+							
+                         <h3 class="contents-width">title</h3>
+                            <input class="input-width" type="text" name="blogTitle" id="userName">
                         </div>
                         <div class="register-section-details_flex">
                             <h3 class="contents-width">category</h3>
 
-                            <select class="input-width" name="blogCategory">
+                            <select class="input-width" name="categoryName">
                                 <option value=""></option>
                                 <option value="家庭">家庭</option>
-                                <option value="勉強">勉強</option>
-                                <option value="仕事">仕事</option>
+								<option value="勉強">勉強</option>
+								<option value="仕事" >仕事</option>
+                               
                             </select>
                         </div>
                         
                         <div class="register-section-details_flex">
                             <h3 class="contents-width">image</h3>
-                            <input type="file" id="fileselect" name="productImage">
+                            <input type="file" id="fileselect" name="blogImage">
                         </div>
 
                         <div class="register-section-details_flex">
                             <h3 class="contents-width">introduce</h3>
-                            <textarea name="productDescription" class="t"></textarea>
+                            <textarea name="article" class="t" ></textarea>
                         </div>
 
                         <div class="register-section-details_flex">

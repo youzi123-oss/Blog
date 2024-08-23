@@ -36,6 +36,7 @@ public class AccountService {
 	 
 	 public Account loginCheck(String accountEmail, String password) {
 		 Account account=accountDao.findByAccountEmailAndPassword(accountEmail, password);
+		//loginCheckメソッドを呼び出してその結果をadminという変数に格納
 		 if(account==null) {
 			 return null;
 		 }else {

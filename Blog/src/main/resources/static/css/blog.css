@@ -9,14 +9,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-   
     background-size: cover;
-    
-   
 }
 /* 表单颜色 */
-form{
-   
+.form-contents{
     /* width: 562px;
     height: 520px;
     background-color: #fff;
@@ -29,6 +25,31 @@ form{
     width: 450px;
     height: 520px;
     justify-content: center;
+    display: flex;
+    align-items: center;
+  
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #a29bfe;
+    border-radius: 15px;
+    background-color:  #fff;
+    /* background-image: linear-gradient(to left,
+    #a29bf6,#fd79a8); */
+}
+
+.contents{
+    /* width: 562px;
+    height: 520px;
+    background-color: #fff;
+    box-shadow: 0px,15px,40px #b6354e ;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(img/8.jpg); */
+    width: 450px;
+    height: 520px;
+    /* justify-content: center; */
     display: flex;
     align-items: center;
   
@@ -211,10 +232,19 @@ select{
         font-weight: 400;
         font-style: normal;
     }
+	.pc-list h2 {
+	     font-size: 1.2rem;
+	     font-weight: 600;
+	     color: #594A4E;
+	     font-family: "Permanent Marker", cursive;
+	     font-weight: 400;
+	     font-style: normal;
+	 }
 /* 点击右边链接边颜色 */
     .pc-list a:hover {
         color: #2f8792;
     }
+
 
 /* 让字不超过规定的区域 */
     .menu {
@@ -303,27 +333,21 @@ select{
 
 
 }
-/* 名字的字体颜色和大小 */
-#w-line-1{
+/* 名字的字体颜色和大小 ID选择器*/
+.w-line-1{
     font-size: 1.2rem;
     font-weight: 600;
     color: #594A4E;
     font-family: "Permanent Marker", cursive;
     font-weight: 400;
     font-style: normal;
+	display: flex;
+}
 
-}
-  
-/* 新规记事 */
-#w-line-2{
-    color:#70b4e3;
-    font-size: 26px;
-    margin-top: 17px;
-    text-align: center;
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
+
+ 
+/* 新规记事 ,类选择器*/
+
 
 /* 字体大小和类型 */
 h3{
@@ -335,6 +359,19 @@ h3{
     font-weight: 400;
     font-style: normal;
 }
+#title{
+	font-weight: 400;
+	color:#70b4e3;
+	padding: 7px 4;
+	font-family: "Permanent Marker", cursive;
+	font-weight: 400;
+	font-style: normal;
+	text-align: center;
+	font-size: 30px;
+}
+
+
+
 
 
  
