@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+    <!-- 左側 -->
+    <header id="header">
+		
+		<!--img class="avatar2" th:src="@{/img/3.jpg}" alt="img"-->
+		
+        <div class="user-box">
+		
+        <a href="#" class="avatar">
+          <img th:src="@{/img/2.jpg}" alt="img">
+         </a>
+    <span>
+        <b style="color: black;">motto</b><br>
+        <p style="color: black;"><b>"人事を尽くす、自然に任す"</b></p>
+    </span>
+</div>
+<div class="copyright">@copyright2024</div>
+
+</header>
+<!-- 右側-->
+ <div class="main">
+    <!-- 自己紹介部分 -->
+<section id="one">
+    <h2>自己紹介</h2>
+    <p class="word">
+    <font>
+      貴重なお時間をいただきました、ありがとうございます。
+      私はトギョウホウと申します。中国出身です。現在はJava平日授業を参加してJavaを勉強中です。
+      学生時代から、コンピューターに趣味を持って、ソフトウェアエンジニアを目指すして頑張ります。
+      自分の特徴を言わせれば、やる気があり、責任感が強く学習力が高いことです。 このような発表機会をいただきありがとうございます。
+      <br>ぜひ、よろしくお願いいたします。
+    </font>
+    </p>
+</section>
+<!-- 作品 -->
+  <section class="my-project">
+    <div class="project-main">
+        <h2><span>my project</span></h2>
+        <div class="project-box">
+            <div class="project">
+                <div class="project-img">
+                    <img th:src="@{/img/1.jpg}" alt="">
+                </div>
+                <div class="project-intro">
+                    <p class="t">項目１</p>
+                    <p class="intro">項目紹介</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-img">
+                    <img th:src="@{/img/12.jpg}" alt="">
+                </div>
+                <div class="project-intro">
+                    <p class="t">項目2</p>
+                    <p class="intro">項目紹介</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-img">
+                    <img th:src="@{/img/13.jpg}">
+                </div>
+                <div class="project-intro">
+                    <p class="t">項目3</p>
+                    <p class="intro">項目紹介</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-img">
+                    <img th:src="@{/img/14.jpg}" alt="">
+                </div>
+                <div class="project-intro">
+                    <p class="t">項目4</p>
+                    <p class="intro">項目紹介</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+  <!-- 作品end -->
+   <!-- 技能 -->
+   
+</body>
+</html>

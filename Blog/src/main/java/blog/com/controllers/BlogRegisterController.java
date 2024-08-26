@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller // 表明这里是关于bloglogin的控制台
 public class BlogRegisterController {
-	@Autowired // 一定要调用服务层的数据来实现方法
+	@Autowired
 	private BlogService blogService;
 
 //为了避免没有登录的人可以直接访问这个网站，所以要使用session来检测这个用户是否正常登陆了

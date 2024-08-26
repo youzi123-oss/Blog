@@ -50,7 +50,7 @@ body{
     width: 450px;
     height: 520px;
     /* justify-content: center; */
-    display: flex;
+    /*display: flex; */
     align-items: center;
   
     padding: 15px;
@@ -114,9 +114,12 @@ header {
     margin: 1.2rem 0;
     /* width: 320px; */
 }
-.register-section-details {
- 
-    
+
+.register-section-details_button{
+	text-align: center;
+}
+
+.register-section-details { 
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -286,9 +289,9 @@ select{
     font-weight: 400;
     font-style: normal;
    }
-   #delete{
-    display: block;
-    width: 100%;
+#delete{
+    /*display: block; */
+    width: 210px;
     color: #fff;
     font-size: 14px;
     margin: 0;
