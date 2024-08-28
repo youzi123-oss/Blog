@@ -2,40 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" th:href="@{/css/register.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	<link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
 
 <body th:background="@{/img/6.jpg}" alt="">
-	
-    <main>
+	<main>
 		<div>
-		
 		</div>
-        <section class="register">
-
-            <form class="box" th:action="@{/register/process}" method="post">
-                <h1 class="table">Register</h1>
-
-                <input type="text" class="login-field" value="" placeholder="UserName" name="accountName" required>
-
-
-                <input type="text" class="login-field" value="" placeholder="Email" name="accountEmail" required>
-
-
-                <input type="password" class="login-field" value="" placeholder="Password" name="password" required>
-
-				<div >
-				     <button id="register">Register</button>
-			    </div>
-                <div class="content">
-                    ログインは<a th:href="@{/login}">こちら</a>
-                </div>
-            </form>
-        </section>
-    </main>
+		<section class="register">
+			<form class="box" th:action="@{/register/process}" method="post">
+				<h1 class="table">Register</h1>
+				<input type="text" class="login-field" value="" placeholder="UserName" name="accountName" required>
+				<input type="text" class="login-field" value="" placeholder="Email" name="accountEmail" required>
+				<input type="password" class="login-field" value="" placeholder="Password" name="password" required>
+				<div>
+					<button id="register">Register</button>
+				</div>
+				<div class="content">
+					ログインは<a th:href="@{/login}">こちら</a>
+				</div>
+			</form>
+		</section>
+	</main>
 </body>
 
 </html>

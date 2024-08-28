@@ -11,15 +11,15 @@
 	<link rel="stylesheet" th:href="@{/css/blog_list.css}">
 	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-	<link th:href="@{https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap}" rel="stylesheet">
-		
+	<link th:href="@{https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap}"
+		rel="stylesheet">
+
 </head>
 
 <body>
 	<header>
 		<!--スマートフォン-->
 		<nav class="menu">
-			
 			<div class="menu-contents">
 				<div class="menu-inner">
 					<ul>
@@ -36,30 +36,32 @@
 		</nav>
 		<!--pc-->
 		<nav class="pc">
-		           <div class="pc-inner">
-					<ul class="pc-list">
-						<h2 class="pc-list__item">Welcome!</h2>
-						<h2 class="pc-list__item" th:text="${accountName}"></h2>
-					</ul>
-					
-		               <ul class="pc-list">
-						   <li class="pc-list__item"><a th:href="@{/blog/profile}">Profile</a></li>
-		                   <li class="pc-list__item"><a th:href="@{/blog/register}">Blog Register</a></li>
-		                   <li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
-		               </ul>
-		           </div>
-		       </nav>
+			<div class="pc-inner">
+				<ul class="pc-list">
+					<h2 class="pc-list__item">Welcome!</h2>
+					<h2 class="pc-list__item" th:text="${accountName}"></h2>
+				</ul>
+				<ul class="pc-list">
+					<li class="pc-list__item"><a th:href="@{/blog/select}">Select</a></li>
+					<li class="pc-list__item"><a th:href="@{/blog/profile}">Profile</a></li>
+					<li class="pc-list__item"><a th:href="@{/blog/register}">Blog Register</a></li>
+					<li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
+					<!--<form th:action="@{/user/report/search}" method="get" id="search-form">
+						<input type="text" name="keyword" placeholder="Search Contents．．．">
+					     <button type="submit">Select</button>
+						<button class="btn btn--orange btn--radius" type="submit">Select</button>
+					</form>-->
+				</ul>
+			</div>
+		</nav>
 	</header>
 	<main>
-		<div >
+		<div>
 			<div class="box">
-				
-			   <img th:src="@{/img/11.jpg}" alt="Image">
-				<img th:src="@{/img/10.png}" alt="Image">
-				
 				<img th:src="@{/img/11.jpg}" alt="Image">
 				<img th:src="@{/img/10.png}" alt="Image">
-				
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
 				<img th:src="@{/img/11.jpg}" alt="Image">
 				<img th:src="@{/img/10.png}" alt="Image">
 			</div>
@@ -76,25 +78,22 @@
 					<!--edit中没有数据，是无法显示的。edit后面接着是数据设定-->
 					<!--<a th:href="@{(blogId=${blog.blogId})}">-->
 					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
-					<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="">
-					<p th:text="${blog.blogTitle}"></p><br>
-					<p th:text="${blog.categoryName}"></p><br>
-					</a>	
-					
-						<img src="" alt="">
-						<p></p><br>
-						<p></p>
+						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="">
+						<p th:text="${blog.blogTitle}"></p><br>
+						<p th:text="${blog.categoryName}"></p><br>
+					</a>
+					<img src="" alt="">
+					<p></p><br>
+					<p></p>
 					</a>
 				</li>
-				
 			</ul>
-		  
-		    </article>
-        </div>
+		</article>
+		</div>
 	</main>
 	<footer>
 		<div>
-			<small>&copy; 2022 Izawa</small>
+			<small>&copy; 2024 Togyouho</small>
 		</div>
 	</footer>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"

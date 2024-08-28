@@ -9,91 +9,101 @@ import blog.com.models.dao.AccountDao;
 import blog.com.models.dao.BlogDao;
 import blog.com.models.entity.Blog;
 
-@Service // 这里是bloglist服务层
+//springにこちらはblogサービス層を表示する
+@Service
 public class BlogService {
-	@Autowired // 一般都需要引用Blogdao层的数据
+
+	// Dao層のメソッドと変数を呼び出すために
+	@Autowired
+	// BlogDaoをインスタンス作成、BlogDaoのすべてのデータを blogDaoに入れる
+	// blogDaoを利用してDaoの変数とメソッドを呼び出す
 	private BlogDao blogDao;
 
-//blog一覧のチェック
-//もしaccount==null 戻り値としてnull,现在session拥有所有的登陆情报。首先要检测这个id是否存在
-//findALL内容をコントローラークラスに渡す，可以登录把商品的情报都给控制器
-//用列表是因为返回的值不只有一个
-//blog需要引用java的
+	// blog一覧のチェック
+	// 複数の値が返されるため、リストが使用されます。
+	// メソッドの戻り値はブログ blog が存在するかどうか、パラメータは id です。
 	public List<Blog> selectAllBlog(Long accountId) {
-//方法的返回值是Blog博客是否存在，参数是id
+		// もしaccount==null 戻り値としてnull,これで、セッションにはすべてのログイン情報が含まれます。まず、IDが存在するかどうかを確認します
 		if (accountId == null) {
 			return null;
 		} else {
-			// 目的只允许A用户访问自己A的网站，不允许B用户访问A网站。实现网页同时只能有一个用户访问
-			// accountId具有唯一性，每个人只有一个ID并且不一样。
-			//所以可以通过Id来实现访问的唯一性。findByall引用了dao层的方法去得到所有数据
-			//findByAccountId(accountId)的意思是只允许这个Id去访问这个用户。
-			//服务层是引用了dao层的方法，所以到也需要变化List<Blog>findByAccountId(Long accountId);
+		    //目的は、ユーザー A に自分の Web サイト A へのアクセスのみを許可し、ユーザー B には Web サイト A へのアクセスを許可しないことです。
+            //Web ページに同時にアクセスできるのは 1 人のユーザーだけであることを理解する
+			// accountId は人ずつ一個しかないであり、各人が持つ ID は 1 つだけであり
+            //ID を通じて実現できます。 findByall は、すべてのデータを取得するための dao レイヤー メソッドを参照します。
+			// findByAccountId(accountId) は、この ID のみがこのユーザーへのアクセスを許可されることを意味します。
+			// 服务层是引用了dao层的方法，所以到也需要变化List<Blog>findByAccountId(Long accountId);
+			// findALL内容をコントローラークラスに渡す，ログインして、すべての製品情報をコントローラに与えることができます。
 			return blogDao.findByAccountId(accountId);// 引用了dao层的方法去得到所有数据
-
 		}
 	}
-
-//避免有重复的有关blog名出现，服务层一定要调用Dao
-//商品の登録処理チェック
-//もし、blogTitle==nullだったら、保存処理、true。返回的值全是返回控制台
-//そうでない場合、false
-//括号里面参数的位置要参考entity去写
+	
+   // 商品の登録処理チェック
 	public boolean checkBlogTitle(String blogTitle, String categoryName, String blogImage, String article,
 			Long accountId) {
-		if (blogDao.findByBlogTitle(blogTitle) == null) {// 当它为空的时候证明它是没有重复blog名字的，可以新建一个blog
-			blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));// 调用dao中方法来存储对象
+		// 空の場合は、重複したブログ名がないことが証明され、新しいブログを作成できます。
+		// もし、blogTitle==nullだったら、保存処理、true。
+		if (blogDao.findByBlogTitle(blogTitle) == null) {
+			// dao のメソッドを呼び出してオブジェクトを保存します
+			blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));
 			return true;
 		} else {
+			// そうでない場合、false
 			return false;
 		}
 	}
-	//編集画面を表示するときのチャック
-	//もし、productId == null
-	//そうでない場合は,findByProductIdの情報をコントローラークラスに渡す
+
+	// 編集画面を表示するときのチャック
 	public Blog blogEaitCheck(Long blogId) {
-	if(blogId == null) {
-		return null;
-	}else {
+		// もし、productId == null
+		if (blogId == null) {
+			return null;
+		} else {
+			// そうでない場合は,findByProductIdの情報をコントローラークラスに渡す
 			return blogDao.findByBlogId(blogId);
 		}
 	}
-	//更新処理のチェックの
-	//もし、blogId==nullだったら、更新処理はしない
-	//false
-	//そうでない場合は、更新処理をする
-	//コントローラークラスからもらった、blogIdを使って編集する前の、データを取得
-	//変更するべきところだけ、セッターを使用してデータを更新をする
-	//trueを返す
-	public boolean blogUpdate(Long blogId,String blogTitle, String categoryName, String blogImage, String article, Long accountId) {
-		if(blogId == null) {
+
+	// 更新処理のチェックの
+	public boolean blogUpdate(Long blogId, String blogTitle, String categoryName, String blogImage, String article,
+			Long accountId) {
+		// もし、blogId==nullだったら、更新処理はしない
+		if (blogId == null) {
+			// false
 			return false;
-		}else {
-			Blog blog= blogDao.findByBlogId(blogId);
+			// そうでない場合は、更新処理をする
+			// コントローラークラスからもらった、blogIdを使って編集する前の、データを取得
+			// 変更するべきところだけ、セッターを使用してデータを更新をする
+		} else {
+			Blog blog = blogDao.findByBlogId(blogId);
 			blog.setBlogTitle(blogTitle);
 			blog.setCategoryName(categoryName);
 			blog.setBlogImage(blogImage);
 			blog.setArticle(article);
-			
-			
-			blog.setAccountId(accountId);
-		
-			blogDao.save(blog);
+            blog.setAccountId(accountId);
+            blogDao.save(blog);
+			// trueを返す
 			return true;
 		}
 	}
-	//削除のチェック
-	//もし、コントローラーからもらったblogIdがnullであれば
-	//削除できないこと　false
-	//そうでない場合
-	//deleteByBlogIdを使用してブログを削除
-	//true
+
+	// 削除のチェック
 	public boolean deleteBlog(Long blogId) {
-		if(blogId == null) {
+		// もし、コントローラーからもらったblogIdがnullであれば
+		if (blogId == null) {
+			// 削除できないこと false
 			return false;
-		}else {
+		// そうでない場合
+		} else {
+			// deleteByBlogIdを使用してブログを削除
 			blogDao.deleteByBlogId(blogId);
+			// true
 			return true;
 		}
 	}
+	
+	// select
+		public Blog selectBlogTitle(String keyword) {
+			return blogDao.findByBlogTitle(keyword);
+		}
 }

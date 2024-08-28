@@ -98,7 +98,7 @@ a.btn--orange {
     font-weight: 400;
     font-style: normal;
    */
-   
+   text-align: center;
 }
 
 .btn--orange:hover,
@@ -289,3 +289,18 @@ main {
     margin-bottom:3rem;
 }
  
+input[type="text"] {
+    padding: 13px 25px;
+    border: 10px solid #6e6d6d;
+    line-height: 0.5;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 0 3px #ccc inset;
+    /* width: 200px; */
+    width: 80px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #70b4e3;
+    color:#366ae6 ;
+   
+}

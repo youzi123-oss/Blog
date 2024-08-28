@@ -11,46 +11,44 @@ import blog.com.models.entity.Account;
 import blog.com.models.entity.Blog;
 import blog.com.services.BlogService;
 import jakarta.servlet.http.HttpSession;
-//这里的引用东西全部在pom.xml里面自动下载对应的包
 
-@Controller//表明下面是控制台。
+//ここで参照されているものはすべて、対応するパッケージを pom.xml に自動的にダウンロードします。
+//springにここはlogin司令塔を伝える、サービス層のメソッドを使用したい
+@Controller
 public class BlogListController {
 
-//登录的情报全部存在了session上面，在这里想要去调用session里面的信息
+	// Sessionが使えるように宣言、sessionに既にloginデータを入れました(session.setAttribute("loginAccountInfo",
+	// account);),
+	// session中のloginの情報を使いたい、ページを移動する時accountがnullかどうかを確認をする
 	@Autowired
-	private  HttpSession session;
-	
-	@Autowired//需要使用blogservices的信息,调用服务层的方法来具体实现
+	private HttpSession session;
+	// BlogServices層のメソッドと変数を使用するために
+	@Autowired
+	// BlogServiceをインスタンスし、BlogServiceのすべてのデータをblogServiceに入れる
+	// blogServiceを利用してBlogServiceの変数とメソッドを呼び出す
 	private BlogService blogservice;
-	
-	//商品一覧画面を表示する
-    @GetMapping("/blog/list")
-    // 从网页给你信息时候，用model去接收。想要在页面显示的同时把之前输入的名字也显示在页面上
-    //model一定引用spring的包
+
+	// 商品一覧画面を表示する
+	@GetMapping("/blog/list")
 	public String getBlogList(Model model) {
-		//セッションからログインしている人の情報を取得,登录的信息全部存在了这个key值里面了loginAccountInfo
-    	//(Account)这个系统去判断是否你是要从account中取值
-    	 Account account = (Account) session.getAttribute("loginAccountInfo");
-	
-    	 
-    	 //もし、admin==null ログイン画面にリダイレクトする
-    	 //そうでない場合
-    	 //ログインしている人の名前の情報を画面に渡して商品一覧のhtmlを表示する
-    	 if(account == null) {
-    		 return "redirect:/login";
-    	 }else {
-    		 //商品の情報を取得する,和服务层的方法的返回值一样.list引用了java
-    		 //商品情报全部给了blogList
-    		 List<Blog> blogList = blogservice.selectAllBlog(account.getAccountId());
-    		 
-    		 //把blog信息给网页
-    		model.addAttribute("blogList",blogList);	 
-    		 //这里只是把人名给网页证明登录成功
-    		 model.addAttribute("accountName",account.getAccountName());
-    		 return "blog_list.html";
-    	 }}
-	
-	
-	
-	
+		// セッションからログインしている人の情報を取得,すべてのログイン情報はこのキー値（loginAccountInfo）に保存されます。
+		// (Account)这个系统去判断是否你是要从account中取值
+		Account account = (Account) session.getAttribute("loginAccountInfo");
+		// もし、account==null ログイン画面にリダイレクトする
+		if (account == null) {
+			return "redirect:/login";
+		 // そうでない場合
+		} else {
+			// 商品の情報を取得する,Javaのサービス層メソッドの戻り値リスト参照と同じです。
+			// すべての製品情報はブログリストに掲載されています
+			List<Blog> blogList = blogservice.selectAllBlog(account.getAccountId());
+			// Webページにブログ情報を載せる
+			model.addAttribute("blogList", blogList);
+			// これは、ログインが成功したことを証明するために Web ページにその人の名前を表示するだけです。
+			model.addAttribute("accountName", account.getAccountName());
+			// ログインしている人の名前の情報を画面に渡して商品一覧のhtmlを表示する
+			return "blog_list.html";
+		}
+	}
+
 }

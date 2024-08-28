@@ -21,7 +21,6 @@
 			<div class="menu-contents">
 				<div class="menu-inner">
 					<ul>
-
 						<li class="menu__item"><a href="">Logout</a></li>
 					</ul>
 				</div>
@@ -40,6 +39,7 @@
 					<h2 class="pc-list__item" th:text="${accountName}"></h2>
 				</ul>
 				<ul class="pc-list">
+					<li class="pc-list__item"><a th:href="@{/blog/select}">Select</a></li>
 					<li class="pc-list__item"><a th:href="@{/blog/profile}">Profile</a></li>
 					<li class="pc-list__item"><a th:href="@{/blog/register}">Blog Register</a></li>
 					<li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
@@ -61,7 +61,6 @@
 							</div>
 							<div class="register-section-details_flex">
 								<h3 class="contents-width">category</h3>
-	
 								<select class="input-width" name="categoryName">
 									<option value=""></option>
 									<option value="家庭" th:selected="${blog.categoryName}=='家庭'">家庭</option>
@@ -77,7 +76,6 @@
 								<h3 class="contents-width">introduce</h3>
 								<textarea name="article" th:text="${blog.article}"></textarea>
 							</div>
-	
 							<div class="register-section-details_flex">
 								<input type="hidden" name="blogId" th:value="${blog.blogId}">
 								<button id="update">Update</button>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blog List</title>
+	<!-- <link rel="stylesheet" href="blog.css"> -->
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/blog_list.css}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link th:href="@{https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&display=swap}"
+		rel="stylesheet">
+
+</head>
+
+<body>
+	<header>
+		<!--スマートフォン-->
+		<nav class="menu">
+			<div class="menu-contents">
+				<div class="menu-inner">
+					<ul>
+						<li class="menu__item"></li>
+						<li class="menu__item"><a href="">Blog</a></li>
+					</ul>
+				</div>
+				<div class="menu-toggle_btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+		<!--pc-->
+		<nav class="pc">
+			<div class="pc-inner">
+				<ul class="pc-list">
+					<h2 class="pc-list__item">Welcome!</h2>
+					<h2 class="pc-list__item" th:text="${accountName}"></h2>
+				</ul>
+				<ul class="pc-list">
+					<li class="pc-list__item"><a th:href="@{/blog/profile}">Profile</a></li>
+					<li class="pc-list__item"><a th:href="@{/blog/register}">Blog Register</a></li>
+					<li class="pc-list__item"><a th:href="@{/account/logout}">Log out</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<div>
+			<div class="box">
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
+				<img th:src="@{/img/11.jpg}" alt="Image">
+				<img th:src="@{/img/10.png}" alt="Image">
+			</div>
+		</div>
+		<article>
+			<!-- <h2 id="w-line-2">Blog List</h2>
+			<section class="register-item">
+				<div class="all-view-register__button">
+					<a th:href="@{/blog/register}" class="btn btn--orange btn--radius">Blog Register</a>
+				</div>
+			</section> -->
+			<!--<div class="register-section-details_flex">
+					<h3 class="contents-width">image</h3>
+					<input type="file" id="fileselect" name="blogImage">
+			</div>-->
+            <h2 id="w-line-2">報告事項一覧（検索結果）</h2>
+            <section class="register-item"></section>
+             <form th:action="@{/blog/search}" method="get" id="search-form">
+                <div class="all-view-register__button"></div>
+                <input type="text" name="keyword" placeholder="検索内容．．．">
+                <button class="btn btn--orange btn--radius" type="submit">検索</button>
+                </div>
+           </form>
+            </section>
+
+			<ul class="products">
+				<li th:each="blog:${blogList}">
+					<!--edit中没有数据，是无法显示的。edit后面接着是数据设定-->
+					<!--<a th:href="@{(blogId=${blog.blogId})}">-->
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="">
+						<p th:text="${blog.blogTitle}"></p><br>
+						<p th:text="${blog.categoryName}"></p><br>
+					</a>
+					<img src="" alt="">
+					<p></p><br>
+					<p></p>
+					</a>
+				</li>
+			</ul>
+		</article>
+		</div>
+	</main>
+	<footer>
+		<div>
+			<small>&copy; 2024 Togyouho</small>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="./js/common.js"></script>
+</body>
+
+</html>

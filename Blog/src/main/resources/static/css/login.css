@@ -31,6 +31,13 @@ letter-spacing: 5px;
 color: #a29bfe;
 }
 
+h2{
+font: 800 20px '';
+text-align: center;
+letter-spacing: 4px;
+color:#fd79a8;
+}
+
 .box input{
 width: 100%;
 margin-bottom: 20px;

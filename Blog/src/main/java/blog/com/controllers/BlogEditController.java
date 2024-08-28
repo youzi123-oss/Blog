@@ -20,57 +20,63 @@ import blog.com.models.entity.Blog;
 import blog.com.services.BlogService;
 import jakarta.servlet.http.HttpSession;
 
-@Controller // 下面是blogedit的控制台，使用服务层的方法来实现
+//springにここはlogin司令塔を伝える、サービス層のメソッドを使用したい
+@Controller
 public class BlogEditController {
+	// BlogServices層のメソッドと変数を使用するために
 	@Autowired
+	// BlogServiceをインスタンスし、BlogServiceのすべてのデータをblogServiceに入れる
+	// blogServiceを利用してBlogServiceの変数とメソッドを呼び出す
 	private BlogService blogService;
-
+	// Sessionが使えるように宣言、sessionに既にloginデータを入れました(session.setAttribute("loginAccountInfo",
+	// account);),
+	// session中のloginの情報を使いたい
 	@Autowired
 	private HttpSession session;
 
-//編集画面を表示する
+	// 編集画面を表示する
+	// 編集処理
 	@GetMapping("/blog/edit/{blogId}")
 	public String getBlogEdit(@PathVariable Long blogId, Model model) {
 		// セッションからログインしている人の情報をaccountという変数に格納
 		Account account = (Account) session.getAttribute("loginAccountInfo");
 		// もしaccount==null ログイン画面にリダイレクトする
-		// そうでない場合は、編集画面を表示させる情報を変数に格納 products
-		// もし、products == nullだったら、商品の一覧ページにリダイレクトする
-		// そうでない場合は、編集画面に編集する内容を渡す
-		// 編集画面を表示
 		if (account == null) {
 			return "redirect:/login";
+			// そうでない場合は、編集画面を表示させる情報を変数に格納 products
 		} else {
 			Blog blog = blogService.blogEaitCheck(blogId);
+			// もし、products == nullだったら、商品の一覧ページにリダイレクトする
 			if (blog == null) {
 				return "redirect:/blog/list";
+				// そうでない場合は、編集画面に編集する内容を渡す
 			} else {
+				// 編集するデータをhtmlに渡して表示する
 				model.addAttribute("accountName", account.getAccountName());
 				model.addAttribute("blog", blog);
+				// 編集画面を表示
 				return "blog_edit.html";
 			}
 
 		}
 	}
 
-//更新処理
+	// 更新処理（変更する時の前の情報を残しますために、前の入力した情報とblog編集画面同時に表示する）
 	@PostMapping("/blog/edit")
 	public String blogUpdate(@RequestParam String blogTitle, @RequestParam String categoryName,
 			@RequestParam MultipartFile blogImage, @RequestParam String article, @RequestParam Long blogId) {
 		// セッションからログインしている人の情報をaccountという変数に格納
 		Account account = (Account) session.getAttribute("loginAccountInfo");
 		// もしaccount==null ログイン画面にリダイレクトする
-		// そうでない場合は、
-		/*
-		 * 現在の日時情報を元に、ファイル名を作成しています。simpleDateFormatクラスを使用して、日時のフォーマットを指定しています
-		 * 具体的には、"yyyy-MM-dd-mm-ss"の形式でフォーマットされた文字列を取得している
-		 * その後、blogImageオブジェクトから元のファイル名を取得し、フォーマットされた日時文字列と連結して、fileName変数に代入
-		 */
 		// ファイルの保存
-		// もし、blogUpdateの結果がtrueの場合は、商品の一覧にリダイレクトする
-		// そうでない場合は、、商品編集画面にリダイレクトする
 		if (account == null) {
 			return "redirect:/login";
+			// そうでない場合は、
+			/*
+			 * 現在の日時情報を元に、ファイル名を作成しています。simpleDateFormatクラスを使用して、日時のフォーマットを指定しています
+			 * 具体的には、"yyyy-MM-dd-mm-ss"の形式でフォーマットされた文字列を取得している
+			 * その後、blogImageオブジェクトから元のファイル名を取得し、フォーマットされた日時文字列と連結して、fileName変数に代入
+			 */
 		} else {
 			String fileName = new SimpleDateFormat("yyyy-MM-HH-dd-mm-ss-").format(new Date())
 					+ blogImage.getOriginalFilename();
@@ -80,12 +86,17 @@ public class BlogEditController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(blogService.blogUpdate(blogId, blogTitle, categoryName, fileName, article, account.getAccountId())) {
+			// BlogServiceの中でpublic boolean blogUpdate(Long blogId,String blogTitle, String
+			// categoryName, String blogImage, String article, Long accountId)
+			// 一致します
+			// もし、blogUpdateの結果がtrueの場合は、商品の一覧にリダイレクトする
+			if (blogService.blogUpdate(blogId, blogTitle, categoryName, fileName, article, account.getAccountId())) {
 				return "redirect:/blog/list";
-			}else {
-				return "redirect:/blog/edit"+blogId;
+			} else {
+				// そうでない場合は、、商品編集画面にリダイレクトする
+				return "redirect:/blog/edit" + blogId;
 			}
 		}
-		
+
 	}
 }

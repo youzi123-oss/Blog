@@ -8,35 +8,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import blog.com.services.AccountService;
 
-@Controller//申明这里是控制台
+//springにここはlogin司令塔を伝える
+@Controller
 public class AccountRegisterController {
 
-	@Autowired//为了使用AccountServices层中的方法和变量
-	private AccountService accountService;//实例化AccountService对象，把类的信息都放入了accountService里面
-	
-	//登録画面を表示
+	// AccountServices層のメソッドと変数を使用するために
+	@Autowired
+	// AccountServiceをインスタンスし、AccountServiceのすべてのデータをaccountServiceに入れる
+	// accountServiceを利用してAccountServiceの変数とメソッドを呼び出す
+	private AccountService accountService;
+
+	// 登録画面を表示
 	@GetMapping("/register")
 	public String getAccountRegister() {
 		return "register.html";
 	}
-	
-	//登録処理
+
+	// 登録処理
 	@PostMapping("/register/process")
-	//这里要使用entity规定的名字
-	 //もし、createAdminがtrue  login.htmlへ移動。
-//	表明用户在注册时候邮件没有重复，正常注册成功，直接返回登录界面进入页面
-	//どうでない場合、register.htmlに残します。
-//	说明用户在注册时候邮箱重复注册失败，无法登录
-	//这里需要引用service中的方法来实现
-	public String postAccountRegister(@RequestParam String accountName,
-			                          @RequestParam String accountEmail,
-			                          @RequestParam String password
-			                          ) {
-		if(accountService.createAccount(accountName, accountEmail, password)) {
+
+	// もし、createAccountがtrue login.htmlへ移動。
+	// これは、ユーザーが登録時に重複したメールアドレスを使用して、ログインできないことを意味します。
+	// ここで、サービス層ののメソッドを利用して実現する必要があります。
+	// メソッドの中でデータ型を入れますけど（public String postAccountRegister(@RequestParam String
+	// accountName,）、
+	// データを呼びだす時にデータ型はいらないaccountService.createAccount(accountName, accountEmail,
+	// password)
+	public String postAccountRegister(@RequestParam String accountName, @RequestParam String accountEmail,
+			@RequestParam String password) {
+		if (accountService.createAccount(accountName, accountEmail, password)) {
+			// ユーザーの登録時に重複する電子メールがなく、通常の登録が成功し、ユーザーがログインに飛んでいく
 			return "login.html";
-		}else {
+		} else {
+			// どうでない場合、register.htmlに残します。
 			return "register.html";
 		}
-		
+
 	}
 }
